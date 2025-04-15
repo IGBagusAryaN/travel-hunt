@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@font-face {
+  font-family: 'Aspekta';
+  src: url('./assets/fonts/otf/Aspekta-400.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Aspekta';
+  src: url('./assets/fonts/otf/Aspekta-600.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+body {
+  font-family: 'Aspekta', sans-serif;
+  color: #1b1b1b;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  -webkit-text-fill-color: #000 !important;
+  transition: background-color 9999s ease-in-out 0s;
+}
