@@ -37,7 +37,7 @@ export const SignUp = () => {
       .promise(
         fetchRegister(data),
         {
-          loading: "Sedang mendaftarkan akun...",
+          loading: "Creating your account...",
           success: (res) => {
             const responseData = res.data;
             navigate("/");
