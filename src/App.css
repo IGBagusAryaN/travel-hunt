@@ -1,10 +1,19 @@
 @import "tailwindcss";
 @font-face {
   font-family: 'Aspekta';
-  src: url('./assets/fonts/otf/Aspekta-400.otf') format('opentype');
-  font-weight: 400;
+  src: url('./assets/fonts/otf/Aspekta-300.otf') format('opentype');
+  font-weight: 300;
   font-style: normal;
 }
+
+
+@font-face {
+  font-family: 'Aspekta';
+  src: url('./assets/fonts/otf/Aspekta-500.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
 
 @font-face {
   font-family: 'Aspekta';
@@ -25,4 +34,15 @@ input:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0 1000px white inset !important;
   -webkit-text-fill-color: #000 !important;
   transition: background-color 9999s ease-in-out 0s;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
