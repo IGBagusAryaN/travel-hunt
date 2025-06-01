@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { useAuthStore } from "../../../store/auth-store";
 import { useEffect } from "react";
+import image from '/assets/logo-black.png';
 
 export const Navbar = () => {
   const { user } = useAuthStore();
@@ -15,7 +16,7 @@ export const Navbar = () => {
         <Link to={"/"} className=" flex items-center">
           <span className=" font-bold text-[24px]">travelHunt</span>
           <img
-            src="../src/assets/logo-black.png"
+            src={image}
             alt=""
             className=" w-[30px] h-[33px]"
           />

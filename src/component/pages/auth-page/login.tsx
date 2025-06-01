@@ -8,6 +8,8 @@ import toast from "react-hot-toast";
 import { fetchLogin } from "../../../services/auth-service/auth.service";
 import Cookies from "js-cookie";
 import { useAuthStore } from "../../../store/auth-store";
+import image from '/assets/image.png';
+import logo from '/assets/logo.png';
 
 
 const loginSchema = z.object({
@@ -76,7 +78,7 @@ export const Login = () => {
       <div className="grid grid-cols-[1.5fr_3fr]">
       <div className="relative h-[100vh]">
           <img
-            src="../src/assets/image.png"
+            src={image}
             alt=""
             className="h-full w-full object-cover"
           />
@@ -84,7 +86,7 @@ export const Login = () => {
           <div className="absolute top-5 left-5 flex items-center">
             <span className="text-white font-bold text-[20px]">travelHunt</span>
             <img
-              src="../src/assets/logo.png"
+              src={logo}
               alt=""
               className=" w-[30px] h-[30px]"
             />

@@ -6,6 +6,9 @@ import { Link, useNavigate } from "react-router";
 import { z } from "zod";
 import { fetchRegister } from "../../../services/auth-service/auth.service";
 import People from "../../lottie/people";
+import image from '/assets/image.png';
+import logo from '/assets/logo.png';
+
 
 const registerSchema = z.object({
   name: z.string().min(3, "Full name is required"),
@@ -69,7 +72,7 @@ export const SignUp = () => {
       <div className="grid grid-cols-[1.5fr_3fr]">
         <div className="relative h-[100vh]">
           <img
-            src="../src/assets/image.png"
+            src={image}
             alt=""
             className="h-full w-full object-cover"
           />
@@ -78,7 +81,7 @@ export const SignUp = () => {
           <div className="absolute top-5 left-5 flex items-center">
             <span className="text-white font-bold text-[20px]">travelHunt</span>
             <img
-              src="../src/assets/logo.png"
+              src={logo}
               alt=""
               className=" w-[30px] h-[30px]"
             />
