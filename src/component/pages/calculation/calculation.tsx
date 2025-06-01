@@ -1,6 +1,5 @@
 import { Link, useNavigate, useParams } from "react-router";
 import Plane from "../../lottie/plane";
-import { Navbar } from "../navbar/navbar";
 import DropdownGrid from "./dropdown";
 import { Calculations } from "../../../services/calculation-service/calculation-service";
 import { useRecommendationStore } from "../../../services/recommendations.service/recommendations.service";

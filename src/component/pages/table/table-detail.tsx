@@ -1,5 +1,4 @@
 import { Link, useParams } from "react-router";
-import { Navbar } from "../navbar/navbar";
 import { useRecommendationStore } from "../../../services/recommendations.service/recommendations.service";
 import { useEffect, useState } from "react";
 import Loading from "../../lottie/loading";

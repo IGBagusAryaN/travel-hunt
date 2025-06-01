@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Dropdown from "./choose";
-import toast from "react-hot-toast";
 
 interface DropdownGridProps {
   onSubmit: (weights: Record<string, number>) => void

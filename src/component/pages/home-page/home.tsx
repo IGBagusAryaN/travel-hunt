@@ -1,6 +1,5 @@
 import { Link } from "react-router";
 import Hero from "../../lottie/hero";
-import { Navbar } from "../navbar/navbar";
 import { PopularPlace } from "./popular-place";
 import { motion } from "framer-motion";
 import { About } from "./about";

@@ -16,7 +16,7 @@ export const Cities = () => {
   const [city, setCity] = useState<Cities[]>([]);
   const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchApi = async () => {
