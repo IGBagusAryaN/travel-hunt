@@ -8,7 +8,7 @@ import { Navigate } from "react-router";
 import Loading from "../lottie/loading";
 
 export const PrivateLayout = () => {
-  const { user, setUser } = useAuthStore();
+  const { setUser } = useAuthStore();
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
 
   function retrieveCurrentUser() {
