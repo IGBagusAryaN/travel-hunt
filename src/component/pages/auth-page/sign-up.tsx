@@ -6,9 +6,8 @@ import { Link, useNavigate } from "react-router";
 import { z } from "zod";
 import { fetchRegister } from "../../../services/auth-service/auth.service";
 import People from "../../lottie/people";
-import image from '/assets/image.png';
-import logo from '/assets/logo.png';
-
+import image from "/assets/image.png";
+import logo from "/assets/logo.png";
 
 const registerSchema = z.object({
   name: z.string().min(3, "Full name is required"),
@@ -69,22 +68,14 @@ export const SignUp = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-[1.5fr_3fr]">
-        <div className="relative h-[100vh]">
-          <img
-            src={image}
-            alt=""
-            className="h-full w-full object-cover"
-          />
+      <div className="grid grid-cols-1 md:grid-cols-[1.5fr_3fr]">
+        <div className="relative h-[100vh] hidden lg:block">
+          <img src={image} alt="" className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-black opacity-30"></div>
 
           <div className="absolute top-5 left-5 flex items-center">
             <span className="text-white font-bold text-[20px]">travelHunt</span>
-            <img
-              src={logo}
-              alt=""
-              className=" w-[30px] h-[30px]"
-            />
+            <img src={logo} alt="" className=" w-[30px] h-[30px]" />
           </div>
           <People />
           <div className="absolute top-127 left-23">
@@ -98,8 +89,8 @@ export const SignUp = () => {
             about exploring...
           </p>
         </div>
-        <div className="flex justify-center">
-          <div className="pt-32 w-[40%]">
+        <div className="flex justify-center px-4 sm:px-6 md:px-10">
+          <div className="pt-32 w-full sm:w-[80%] md:w-[60%] lg:w-[40%]">
             <div className="font-semibold text-[48px]">Sign Up</div>
             <div className="ml-[1px] font-light mt-2 text-gray-400">
               Create your account to get started!
