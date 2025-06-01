@@ -1,13 +1,13 @@
 import { Link } from "react-router";
 import { useAuthStore } from "../../../store/auth-store";
 import { useEffect } from "react";
-import image from '/assets/logo-black.png';
+import image from "/assets/logo-black.png";
 
 export const Navbar = () => {
   const { user } = useAuthStore();
 
   useEffect(() => {
-    console.log('testtttttt',user?.name);
+    console.log("testtttttt", user?.name);
   });
 
   return (
@@ -15,11 +15,7 @@ export const Navbar = () => {
       <div className="flex justify-between ml-2 fixed pt-10 pb-3 bg-white w-[75%] z-10">
         <Link to={"/"} className=" flex items-center">
           <span className=" font-bold text-[24px]">travelHunt</span>
-          <img
-            src={image}
-            alt=""
-            className=" w-[30px] h-[33px]"
-          />
+          <img src={image} alt="" className=" w-[30px] h-[33px]" />
         </Link>
         <div className="flex items-center mr-2">
           <div className="text-[18px] text-gray-700">Hi, {user?.name}🖐️</div>

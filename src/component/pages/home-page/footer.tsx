@@ -53,7 +53,7 @@ export default function Footer() {
           <Link to={"/"} className=" flex items-center ">
             <span className=" font-bold text-[24px]">travelHunt</span>
             <img
-              src="../src/assets/logo-black.png"
+              src="/assets/logo-black.png"
               alt=""
               className=" w-[30px] h-[33px]"
             />
