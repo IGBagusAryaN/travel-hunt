@@ -1,7 +1,16 @@
-import animationData from '../../assets/Animation - 1744776543153 (1).json';
+// import animationData from 'public/assets/animation1.json';
 import Lottie from 'lottie-react';
+import { useEffect, useState } from 'react';
 
 const Hero = () => {
+    const [animationData, setAnimationData] = useState<any>(null);
+
+  useEffect(() => {
+    fetch('/assets/animation1.json')
+      .then((res) => res.json())
+      .then((data) => setAnimationData(data))
+      .catch((err) => console.error('Gagal load animasi:', err));
+  }, []);
   return (
     <div className=''>
       <Lottie animationData={animationData} loop={true} size={5} />
