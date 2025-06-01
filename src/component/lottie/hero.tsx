@@ -6,7 +6,7 @@ const Hero = () => {
     const [animationData, setAnimationData] = useState<any>(null);
 
   useEffect(() => {
-    fetch('/assets/animation1.json')
+    fetch('/assets/animation6.json')
       .then((res) => res.json())
       .then((data) => setAnimationData(data))
       .catch((err) => console.error('Gagal load animasi:', err));
