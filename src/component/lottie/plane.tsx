@@ -6,7 +6,7 @@ const Plane = () => {
     const [animationData, setAnimationData] = useState<any>(null);
 
   useEffect(() => {
-    fetch('/assets/Animation - 1744820750440.json')
+    fetch('/assets/animation3.json')
       .then((res) => res.json())
       .then((data) => setAnimationData(data))
       .catch((err) => console.error('Gagal load animasi:', err));

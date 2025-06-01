@@ -10,7 +10,7 @@ const Loading = ({size}: LoadingProps) => {
     const [animationData, setAnimationData] = useState<any>(null);
 
   useEffect(() => {
-    fetch('/assets/Animation - 1745047708120.json.json')
+    fetch('/assets/animation5.json')
       .then((res) => res.json())
       .then((data) => setAnimationData(data))
       .catch((err) => console.error('Gagal load animasi:', err));

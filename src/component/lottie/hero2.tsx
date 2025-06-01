@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
   const [animationData, setAnimationData] = useState<any>(null);
 
   useEffect(() => {
-    fetch('/assets/Animation - 1745141198455 (1).json.json')
+    fetch('/assets/animation2.json')
       .then((res) => res.json())
       .then((data) => setAnimationData(data))
       .catch((err) => console.error('Gagal load animasi:', err));

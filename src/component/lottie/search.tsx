@@ -6,7 +6,7 @@ const Search = () => {
     const [animationData, setAnimationData] = useState<any>(null);
 
   useEffect(() => {
-    fetch('/assets/Animation - 1745036143614 (1).json')
+    fetch('/assets/animation1.json')
       .then((res) => res.json())
       .then((data) => setAnimationData(data))
       .catch((err) => console.error('Gagal load animasi:', err));

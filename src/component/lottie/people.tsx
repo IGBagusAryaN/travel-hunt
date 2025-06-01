@@ -6,7 +6,7 @@ const People = () => {
     const [animationData, setAnimationData] = useState<any>(null);
 
   useEffect(() => {
-    fetch('/assets/Animation - 1744711077673 (1).json')
+    fetch('/assets/animation4.json')
       .then((res) => res.json())
       .then((data) => setAnimationData(data))
       .catch((err) => console.error('Gagal load animasi:', err));
