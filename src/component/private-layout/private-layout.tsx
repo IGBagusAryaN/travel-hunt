@@ -45,3 +45,4 @@ export const PrivateLayout = () => {
 
   return isAuthenticated ? <Layout /> : <Navigate to={"/login"} />;
 };
+
