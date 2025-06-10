@@ -91,13 +91,11 @@ export const PopularPlace = () => {
   };
 
   return (
-    <div className="relative my-20">
-      <div className="text-[28px] font-bold mb-6 ml-2">
+    <div className="relative my-20 px-4 sm:px-6 lg:px-8">
+      <div className="text-[24px] sm:text-[28px] font-bold mb-6 ml-2">
         Popular Place in the world
       </div>
-
-      {/* Arrows */}
-      <div className="absolute -left-6 top-1/2 z-10">
+      <div className="absolute left-2 sm:-left-6 top-1/2 z-10">
         <button
           onClick={() => handleArrowClick("left")}
           className="bg-white p-2 rounded-full shadow cursor-pointer"
@@ -117,7 +115,7 @@ export const PopularPlace = () => {
         </button>
       </div>
 
-      <div className="absolute -right-6 top-1/2 z-10">
+      <div className="absolute right-2 sm:-right-6 top-1/2 z-10">
         <button
           onClick={() => handleArrowClick("right")}
           className="bg-white p-2 rounded-full shadow cursor-pointer"
@@ -137,10 +135,9 @@ export const PopularPlace = () => {
         </button>
       </div>
 
-      {/* Carousel Container */}
       <div
         ref={carouselRef}
-        className="flex gap-4 overflow-x-auto no-scrollbar  px-2"
+        className="flex gap-4 overflow-x-auto no-scrollbar px-1 sm:px-2"
         onMouseDown={handleDragStart}
         onMouseMove={handleDragging}
         onMouseUp={handleDragStop}
@@ -153,11 +150,12 @@ export const PopularPlace = () => {
           return (
             <div
               key={index}
-              className="card min-w-[270px] max-w-[270px] flex-shrink-0 rounded-2xl bg-white shadow p-3"
+              className="card w-[85vw] max-w-[270px] flex-shrink-0 rounded-2xl bg-white shadow p-3"
             >
               <img
                 src={place.image}
-                alt="Nusa Penida"
+                alt={place.name}
+                loading="lazy"
                 className="rounded-xl object-cover h-40 w-full"
               />
               <div className="mt-3">
@@ -183,38 +181,41 @@ export const PopularPlace = () => {
                   })}
 
                   {hiddenCategories.length > 2 && (
-                    <div onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                    className="relative">
-                      
-                      <span className="text-xs bg-gray-200 text-gray-700 px-2 py-1 rounded-md font-medium cursor-pointer">+{hiddenCategories.length - 2}
+                    <div
+                      onMouseEnter={() => setHoveredIndex(index)}
+                      onMouseLeave={() => setHoveredIndex(null)}
+                      className="relative"
+                    >
+                      <span className="text-xs bg-gray-200 text-gray-700 px-2 py-1 rounded-md font-medium cursor-pointer">
+                        +{hiddenCategories.length - 2}
                       </span>
                       <AnimatePresence>
-                      {isHovered && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          transition={{ duration: 0.2 }}
-                          className="absolute left-0 -top-24 bg-white rounded-lg shadow-md p-2 z-10 min-w-[160px]"
-                        >
-                          <div className="grid grid-cols-2 gap-2">
-                            {hiddenCategories.map((cat, index) => {
-                              const color = colors[index % colors.length];
-                              return (
-                             <span key={index}
-                             className={`text-xs ${color.bg} ${color.text} px-2 py-1 rounded-md font-medium text-center`}>
-                              {cat}
-                             </span>
-                              );
-                            })}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                        {isHovered && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 10 }}
+                            transition={{ duration: 0.2 }}
+                            className="absolute left-0 -top-24 bg-white rounded-lg shadow-md p-2 z-10 min-w-[160px]"
+                          >
+                            <div className="grid grid-cols-2 gap-2">
+                              {hiddenCategories.map((cat, index) => {
+                                const color = colors[index % colors.length];
+                                return (
+                                  <span
+                                    key={index}
+                                    className={`text-xs ${color.bg} ${color.text} px-2 py-1 rounded-md font-medium text-center`}
+                                  >
+                                    {cat}
+                                  </span>
+                                );
+                              })}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
                   )}
-
                 </div>
               </div>
             </div>

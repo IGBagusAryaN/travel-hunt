@@ -33,10 +33,10 @@ export const Login = () => {
   const onSubmit = (data: LoginFormInputs) => {
     const screenWidth = window.innerWidth;
 
-    if (screenWidth < 1024) {
-      toast.error("Login is only available on desktop devices");
-      return;
-    }
+    // if (screenWidth < 1024) {
+    //   toast.error("Login is only available on desktop devices");
+    //   return;
+    // }
 
     setIsLoading(true);
 

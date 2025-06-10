@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Loading from "../../lottie/loading";
 
 export const TableDetail = () => {
-  const {city} = useParams()
+  const { city } = useParams();
   const { data } = useRecommendationStore();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -14,78 +14,62 @@ export const TableDetail = () => {
     }, 3000);
 
     return () => clearTimeout(timeOut);
-  });
+  }, []);
+
   return (
-    <div className="">
+    <div className="px-4 md:px-8">
       {isLoading ? (
-        <div className="flex justify-center w-full items-center h-[100vh]">
+        <div className="flex justify-center items-center h-screen">
           <Loading size="10%" />
         </div>
       ) : (
-        <div>
-          <div className="relative overflow-x-auto pt-32 ">
-            <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
-              <caption>
-                <div className="flex justify-between items-end py-5 px-2 text-[24px] font-semibold text-left rtl:text-right text-gray-900 bg-white">
+        <div className="pt-28">
+          <div className="relative overflow-x-auto rounded-lg">
+            <table className="w-full text-sm text-left text-gray-500">
+              <caption className="p-4 bg-white text-xl md:text-2xl font-semibold text-gray-900">
+                <div className="flex flex-col gap-3 md:flex-row md:justify-between md:items-end">
                   <div>
                     <div>Recommendation Detail results for {city}</div>
-                    <p className="mt-1 text-sm font-normal text-gray-500 ">
-                    Detailed Recommendations of Tourist Attractions in Bandung Based on Criteria Score Calculation 🎯
+                    <p className="mt-1 text-sm text-gray-500">
+                      Detailed Recommendations of Tourist Attractions in {city} Based on Criteria Score Calculation 🎯
                     </p>
                   </div>
                 </div>
               </caption>
-              <thead className="text-xs text-gray-700 uppercase bg-gray-50  ">
+              <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
-                  <th scope="col" className="px-6 py-3">
-                    Best Rated
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Tourist Attraction
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Facilities
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Price
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Distance
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Parking
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    View
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Activities
-                  </th>
-
-                  {/* <th scope="col" className="px-6 py-3">
-                Action
-              </th> */}
+                  <th className="px-4 md:px-6 py-3">Best Rated</th>
+                  <th className="px-4 md:px-6 py-3">Tourist Attraction</th>
+                  <th className="px-4 md:px-6 py-3">Facilities</th>
+                  <th className="px-4 md:px-6 py-3">Price</th>
+                  <th className="px-4 md:px-6 py-3">Distance</th>
+                  <th className="px-4 md:px-6 py-3">Parking</th>
+                  <th className="px-4 md:px-6 py-3">View</th>
+                  <th className="px-4 md:px-6 py-3">Activities</th>
                 </tr>
               </thead>
               <tbody>
                 {data.map((place, index) => (
                   <tr
-                    className="bg-white border-b  border-gray-200"
+                    className="bg-white border-b border-gray-200"
                     key={place.id}
                   >
                     <th
                       scope="row"
-                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
+                      className="px-4 md:px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
                     >
                       {index + 1}
                     </th>
-                    <Link to={"/detail-destinations"}>
-                      <td className="px-6 py-4 hover:text-[#4B83FE]">
+                    <td className="px-4 md:px-6 py-4 hover:text-[#4B83FE]">
+                      <Link to={"/detail-destinations"}>
                         {place.name}
-                      </td>
-                    </Link>
+                      </Link>
+                    </td>
                     {place.place_scores.map((scoreObj) => (
-                      <td key={scoreObj.criteriasId} className="px-6 py-4">
+                      <td
+                        key={scoreObj.criteriasId}
+                        className="px-4 md:px-6 py-4"
+                      >
                         {scoreObj.score}
                       </td>
                     ))}
@@ -94,14 +78,15 @@ export const TableDetail = () => {
               </tbody>
             </table>
           </div>
-          <div className="flex justify-end">
-            <Link to={"/cities"} className="w-[17%]">
-              <div className="flex items-center gap-2 my-20  hover:text-[#4B83FE]   ">
+
+          <div className="flex justify-center md:justify-end mt-10">
+            <Link to="/cities" className="w-full md:w-auto">
+              <div className="flex items-center justify-center gap-2 py-3 px-4 border border-gray-300 rounded-lg hover:text-[#4B83FE] text-sm md:text-base">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="size-5"
+                  className="w-5 h-5"
                 >
                   <path
                     fillRule="evenodd"

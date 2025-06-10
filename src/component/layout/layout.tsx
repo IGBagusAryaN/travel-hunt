@@ -3,7 +3,7 @@ import { Navbar } from "../pages/navbar/navbar"
 
 export const Layout = () => {
     return(
-        <div className="px-48">
+        <div className="  md:px-48 ">
             <Navbar/>
             <Outlet/>
         </div>

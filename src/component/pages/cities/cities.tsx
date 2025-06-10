@@ -41,26 +41,26 @@ export const Cities = () => {
 
   return (
     <div className="">
-      <div className="flex justify-between items-end pt-36 ">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-5 pt-36 px-4">
         <div>
-          <div className="ml-2 text-[24px] font-semibold">
+          <div className="text-[24px] font-semibold">
             Choose your destination city
           </div>
-          <div className="ml-2 mt-2 max-w-[800px] text-gray-500">
+          <div className="mt-2 max-w-[800px] text-gray-500">
             A different sky, a new atmosphere, and experiences you've never had
             before — it all begins with one simple decision: choosing your
             destination. Let’s explore the world, one city at a time
           </div>
         </div>
 
-        <form className="w-[26%] mr-2">
-          <label className="mb-2 text-sm font-medium text-gray-900 sr-only ">
+        <form className="w-full md:w-[40%]">
+          <label className="mb-2 text-sm font-medium text-gray-900 sr-only">
             Search
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
               <svg
-                className="w-4 h-4 text-gray-500 "
+                className="w-4 h-4 text-gray-500"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -68,9 +68,9 @@ export const Cities = () => {
               >
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                 />
               </svg>
@@ -78,27 +78,25 @@ export const Cities = () => {
             <input
               type="search"
               id="default-search"
-              className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 outline-none "
-              placeholder="Search Mockups, Logos..."
+              className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 outline-none"
+              placeholder="Search cities..."
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
         </form>
       </div>
 
-      <div className="grid grid-cols-4 mt-10 mb-20 gap-5 gap-y-10 mx-2  ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10 mb-20 gap-5 gap-y-10 px-4">
         {isLoading ? (
-          <div className="col-span-4 flex justify-center items-center ">
-            <div className="flex justify-center">
-              <Loading size="30%" />
-            </div>
+          <div className="col-span-4 flex justify-center items-center">
+            <Loading size="30%" />
           </div>
         ) : error ? (
           <div>{error}</div>
         ) : filteredMapCity.length === 0 ? (
           <div className="text-gray-500 flex flex-col items-center justify-center col-span-4">
             <Search />
-            <div className="mt-5">Kota yg anda cari tidak ada!</div>
+            <div className="mt-5">Kota yang Anda cari tidak ada!</div>
           </div>
         ) : (
           filteredMapCity.map((cities, index) => (
@@ -111,7 +109,7 @@ export const Cities = () => {
                 <img
                   src={cities.image_url}
                   alt={cities.city}
-                  className="rounded-2xl object-cover h-40 w-full"
+                  className="rounded-2xl object-cover w-full h-52 md:h-48"
                 />
               </div>
 

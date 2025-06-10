@@ -2,11 +2,10 @@ import { useState } from "react";
 import Dropdown from "./choose";
 
 interface DropdownGridProps {
-  onSubmit: (weights: Record<string, number>) => void
+  onSubmit: (weights: Record<string, number>) => void;
 }
 
-
-export default function DropdownGrid({onSubmit} :DropdownGridProps) {
+export default function DropdownGrid({ onSubmit }: DropdownGridProps) {
   const dropdowns = [
     {
       label: "Facilities",
@@ -57,7 +56,6 @@ export default function DropdownGrid({onSubmit} :DropdownGridProps) {
       ],
     },
   ];
-  
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -69,7 +67,10 @@ export default function DropdownGrid({onSubmit} :DropdownGridProps) {
     dropdowns.map((d) => d.options[0])
   );
 
-  const handleSelect = (index: number, option: {label:string, value: number}) => {
+  const handleSelect = (
+    index: number,
+    option: { label: string; value: number }
+  ) => {
     const updated = [...selectedValues];
     updated[index] = option;
     setSelectedValues(updated);
@@ -80,30 +81,33 @@ export default function DropdownGrid({onSubmit} :DropdownGridProps) {
     const weights: Record<string, number> = {};
 
     dropdowns.forEach((dropdown, index) => {
-      weights[dropdown.label.toLowerCase().replace(/\s/g, "_")] = selectedValues[index].value
+      weights[dropdown.label.toLowerCase().replace(/\s/g, "_")] =
+        selectedValues[index].value;
     });
     onSubmit(weights);
-  }
-
+  };
 
   return (
     <div>
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
-      {dropdowns.map((dropdown, index) => (
-        <Dropdown
-          key={index}
-          label={dropdown.label}
-          selected={selectedValues[index]}
-          options={dropdown.options}
-          isOpen={openIndex === index}
-          onToggle={() => handleToggle(index)}
-          onSelect={(option) => handleSelect(index, option)}
-        />
-      ))}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
+        {dropdowns.map((dropdown, index) => (
+          <Dropdown
+            key={index}
+            label={dropdown.label}
+            selected={selectedValues[index]}
+            options={dropdown.options}
+            isOpen={openIndex === index}
+            onToggle={() => handleToggle(index)}
+            onSelect={(option) => handleSelect(index, option)}
+          />
+        ))}
+      </div>
+      <button
+        className="border border-gray-200 bg-[#4B83FE] w-full p-3 text-white font-bold rounded-sm cursor-pointer text-center"
+        onClick={handleSubmit}
+      >
+        Find
+      </button>
     </div>
-       <button className="border border-gray-200 bg-[#4B83FE] w-full p-3 text-white font-bold rounded-sm cursor-pointer text-center" onClick={handleSubmit}>
-       Find
-       </button>
-       </div>
   );
 }

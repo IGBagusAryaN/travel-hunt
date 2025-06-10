@@ -27,7 +27,7 @@ export const Calculation = () => {
   };
   return (
     <div className="">
-      <div className="pt-28">
+      <div className="pt-28 px-4 md:px-0">
         <div className="flex justify-center">
           <Plane />
         </div>
