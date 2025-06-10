@@ -90,7 +90,7 @@ export default function Footer() {
       </div>
 
       <div className="text-center text-sm text-gray-500 py-4 border-t border-gray-300">
-        © 2025 SPK Destinasi Wisata. All rights reserved.
+        © 2025 Decision support system. All rights reserved.
       </div>
     </footer>
   );

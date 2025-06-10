@@ -11,7 +11,7 @@ export const Home = () => {
       <section className="pt-24 lg:pt-48 px-4 md:px-6">
         <div className="container mx-auto flex flex-col-reverse lg:flex-row items-center gap-10">
           <div className="text-center lg:text-left max-w-xl mx-auto lg:mx-0">
-            <h1 className="text-[32px] md:text-[44px] font-bold leading-snug md:leading-tight">
+            <h1 className="text-[30px] md:text-[44px] font-bold leading-snug md:leading-tight">
               Leave Your{" "}
               <span className="text-[#4B83FE]">Mark in New Places</span> with Us ✈️
             </h1>
