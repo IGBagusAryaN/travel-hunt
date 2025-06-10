@@ -27,7 +27,7 @@ export const TableDetail = () => {
           <div className="relative overflow-x-auto rounded-lg">
             <table className="w-full text-sm text-left text-gray-500">
               <caption className="p-4 bg-white text-xl md:text-2xl font-semibold text-gray-900">
-                <div className="flex flex-col gap-3 md:flex-row md:justify-between md:items-end">
+                <div className="text-start">
                   <div>
                     <div>Recommendation Detail results for {city}</div>
                     <p className="mt-1 text-sm text-gray-500">
@@ -79,7 +79,7 @@ export const TableDetail = () => {
             </table>
           </div>
 
-          <div className="flex justify-center md:justify-end mt-10">
+          <div className="flex justify-center md:justify-end my-10">
             <Link to="/cities" className="w-full md:w-auto">
               <div className="flex items-center justify-center gap-2 py-3 px-4 border border-gray-300 rounded-lg hover:text-[#4B83FE] text-sm md:text-base">
                 <svg

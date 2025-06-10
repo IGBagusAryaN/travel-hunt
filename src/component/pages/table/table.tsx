@@ -84,7 +84,7 @@ export const Table = () => {
             </table>
           </div>
 
-          <div className="flex justify-center md:justify-end mt-10">
+          <div className="flex justify-center md:justify-end my-10">
             <Link to="/cities" className="w-full md:w-auto">
               <div className="flex items-center justify-center gap-2 py-3 px-4 hover:text-[#4B83FE] border border-gray-300 rounded-lg text-sm md:text-base">
                 <svg
