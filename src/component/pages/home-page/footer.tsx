@@ -19,7 +19,7 @@ export default function Footer() {
     window.location.href = `mailto:aryabagus453@gmail.com?subject=Contact Us&body=User email: ${email}`;
   };
   return (
-    <footer className="bg-white text-gray-700">
+    <footer className="bg-white text-gray-700 max-w-screen-xl ">
       <div
         className="bg-[#4B83FE] text-white px-6 py-10 rounded-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mx-2 lg:mx-0"
         id="contact"

@@ -24,6 +24,7 @@ export const PopularPlace = () => {
   const scrollX = useMotionValue(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [places, setPlaces] = useState<Places[]>([]);
+  const [selectedPlace, setSelectedPlace] = useState<Places | null>(null);
 
   const colors = [
     { bg: "bg-sky-100", text: "text-sky-800" },
@@ -36,7 +37,7 @@ export const PopularPlace = () => {
     const fetchPlaces = async () => {
       try {
         const res = await axios.get<Places[]>(
-          "https://api.npoint.io/22e8cfecf9875bcb8e99"
+          "https://api.npoint.io/b4f36b77885a016b239e"
         );
         setPlaces(res.data);
       } catch (error) {
@@ -90,6 +91,25 @@ export const PopularPlace = () => {
     setIsDragging(false);
   };
 
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  // Tutup modal kalau klik di luar
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
+        setSelectedPlace(null);
+      }
+    };
+
+    if (selectedPlace) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [selectedPlace]);
+
   return (
     <div className="relative my-20 px-4 sm:px-6 lg:px-5">
       <div className="text-[24px] sm:text-[28px] font-bold mb-6 ml-2">
@@ -137,7 +157,7 @@ export const PopularPlace = () => {
 
       <div
         ref={carouselRef}
-        className="flex gap-4 overflow-x-auto no-scrollbar px-1 sm:px-2"
+        className="flex gap-4 overflow-x-auto no-scrollbar px-1 sm:px-2 cursor-pointer"
         onMouseDown={handleDragStart}
         onMouseMove={handleDragging}
         onMouseUp={handleDragStop}
@@ -151,6 +171,7 @@ export const PopularPlace = () => {
             <div
               key={index}
               className="card w-[85vw] max-w-[270px] flex-shrink-0 rounded-2xl bg-white shadow p-3"
+              onClick={() => setSelectedPlace(place)}
             >
               <img
                 src={place.image}
@@ -163,7 +184,7 @@ export const PopularPlace = () => {
                   {place.name}
                 </h3>
                 <h6 className="text-gray-500 text-xs">{place.location}</h6>
-                <p className="text-sm text-gray-500 mt-1 line-clamp-4 text-justify">
+                <p className="text-sm text-gray-500 mt-1 line-clamp-2 text-justify">
                   {place.description}
                 </p>
 
@@ -222,8 +243,52 @@ export const PopularPlace = () => {
           );
         })}
       </div>
+      <AnimatePresence>
+        {selectedPlace && (
+          <motion.div
+            className="fixed inset-0 bg-black/60 flex items-center justify-center z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              ref={modalRef} // pasang ref
+              className="bg-white rounded-xl shadow-lg p-7 max-w-lg w-[90%] relative"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+            >
+              {/* Tombol Close */}
+              <button
+                onClick={() => setSelectedPlace(null)}
+                className="absolute top-3 right-3 text-gray-600 hover:text-red-500 cursor-pointer"
+              >
+                ✖
+              </button>
+
+              <img
+                src={selectedPlace.image}
+                alt={selectedPlace.name}
+                className="rounded-lg object-cover w-full h-56"
+              />
+              <h2 className="text-xl font-bold mt-4">{selectedPlace.name}</h2>
+              <p className="text-gray-500 text-md">{selectedPlace.location}</p>
+              <div className="flex flex-wrap gap-2 mt-2">
+                {selectedPlace.categories.map((cat, index) => (
+                  <span
+                    key={index}
+                    className="text-xs bg-sky-100 text-sky-800 px-2 py-1 rounded-md font-medium"
+                  >
+                    {cat}
+                  </span>
+                ))}
+              </div>
+              <p className="text-sm text-gray-700 mt-4">{selectedPlace.description}</p>
+
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
-
-<style></style>;
