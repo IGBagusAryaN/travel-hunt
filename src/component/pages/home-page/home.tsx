@@ -48,15 +48,15 @@ export const Home = () => {
             </motion.div>
           </div>
 
+          <Hero />
           {/* Hero Lottie dengan zoom in/out fleksibel */}
-          <motion.div
+          {/* <motion.div
             className="flex justify-center items-center w-full lg:w-auto"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
-            <Hero />
-          </motion.div>
+          </motion.div> */}
         </div>
       </section>
 

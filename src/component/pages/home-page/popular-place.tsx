@@ -273,7 +273,8 @@ export const PopularPlace = () => {
               />
               <h2 className="text-xl font-bold mt-4">{selectedPlace.name}</h2>
               <p className="text-gray-500 text-md">{selectedPlace.location}</p>
-              <div className="flex flex-wrap gap-2 mt-2">
+              <p className="text-sm text-gray-700 mt-2">{selectedPlace.description}</p>
+              <div className="flex flex-wrap gap-2 mt-4">
                 {selectedPlace.categories.map((cat, index) => (
                   <span
                     key={index}
@@ -283,7 +284,6 @@ export const PopularPlace = () => {
                   </span>
                 ))}
               </div>
-              <p className="text-sm text-gray-700 mt-4">{selectedPlace.description}</p>
 
             </motion.div>
           </motion.div>
