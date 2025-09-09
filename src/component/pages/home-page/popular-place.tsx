@@ -91,11 +91,11 @@ export const PopularPlace = () => {
   };
 
   return (
-    <div className="relative my-20 px-4 sm:px-6 lg:px-8">
+    <div className="relative my-20 px-4 sm:px-6 lg:px-5">
       <div className="text-[24px] sm:text-[28px] font-bold mb-6 ml-2">
         Popular Place in the world
       </div>
-      <div className="absolute left-2 sm:-left-6 top-1/2 z-10">
+      <div className="absolute left-2 sm:-left-6 top-1/2 -z-10">
         <button
           onClick={() => handleArrowClick("left")}
           className="bg-white p-2 rounded-full shadow cursor-pointer"
@@ -115,7 +115,7 @@ export const PopularPlace = () => {
         </button>
       </div>
 
-      <div className="absolute right-2 sm:-right-6 top-1/2 z-10">
+      <div className="absolute right-2 sm:-right-6 top-1/2 -z-10">
         <button
           onClick={() => handleArrowClick("right")}
           className="bg-white p-2 rounded-full shadow cursor-pointer"

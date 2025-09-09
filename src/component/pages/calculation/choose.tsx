@@ -23,7 +23,7 @@ const Dropdown = ({
   onSelect,
 }: DropdownProps) => {
   return (
-    <div className="relative inline-block w-full sm:max-w-xs text-left">
+    <div className="relative inline-block w-full text-left">
       <label className="block text-sm font-medium text-gray-700 mb-1">
         {label}
       </label>
@@ -58,7 +58,7 @@ const Dropdown = ({
             transition={{ duration: 0.2 }}
             className="absolute z-10 mt-2 w-full rounded-xl bg-white shadow-lg ring-1 ring-gray-300 ring-opacity-5"
           >
-            <div className="py-1 max-h-60 overflow-y-auto">
+            <div className="py-1 max-h-60 overflow-y-auto w-full">
               {options.map((option, i) => {
                 const isSelected = option.label === selected.label;
                 return (

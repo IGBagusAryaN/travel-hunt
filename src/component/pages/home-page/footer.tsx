@@ -1,9 +1,29 @@
+import { useState } from "react";
 import { Link } from "react-router";
 
 export default function Footer() {
+  const [email, setEmail] = useState("");
+
+  const handleSend = () => {
+    if (!email) {
+      alert("Email tidak boleh kosong");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Format email tidak valid");
+      return;
+    }
+
+    window.location.href = `mailto:aryabagus453@gmail.com?subject=Contact Us&body=User email: ${email}`;
+  };
   return (
-  <footer className="bg-white text-gray-700">
-      <div className="bg-[#4B83FE] text-white px-6 py-10 rounded-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+    <footer className="bg-white text-gray-700">
+      <div
+        className="bg-[#4B83FE] text-white px-6 py-10 rounded-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mx-2 lg:mx-0"
+        id="contact"
+      >
         <div className="max-w-xl">
           <h2 className="text-[24px] sm:text-[28px] font-bold">Contact us</h2>
           <p className="mt-2 text-sm sm:text-base">
@@ -31,11 +51,18 @@ export default function Footer() {
             <input
               type="email"
               id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 w-full md:w-[250px] outline-none focus:ring-blue-500 focus:border-blue-500"
               placeholder="example@gmail.com"
               required
             />
-            <button type="button" aria-label="Send Email">
+            <button
+              type="button"
+              aria-label="Send Email"
+              onClick={handleSend}
+              className="cursor-pointer"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -49,10 +76,12 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="py-10 px-6 sm:px-10 grid grid-cols-1 md:grid-cols-2 gap-10 border-t border-gray-300 mt-10">
+      <div className="py-10 px-10 lg:px-6 grid grid-cols-1 md:grid-cols-2 gap-10 border-t border-gray-300 mt-10">
         <div>
           <Link to="/" className="flex items-center gap-2">
-            <span className="font-bold text-[22px] sm:text-[24px]">travelHunt</span>
+            <span className="font-bold text-[22px] sm:text-[24px]">
+              travelHunt
+            </span>
             <img
               src="/assets/logo-black.png"
               alt="Logo"
@@ -62,35 +91,43 @@ export default function Footer() {
           <p className="text-sm mt-2">Smart Choices, Great Journeys!</p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 gap-6 lg:justify-items-end">
           <div>
             <h4 className="font-semibold mb-2">Features</h4>
             <ul className="text-sm space-y-1">
-              <li>Recommendation</li>
-              <li>Comparison</li>
-              <li>Tourism Criteria</li>
+              <li className="hover:text-[#4B83FE]">
+                <a href="/">Recommendation</a>
+              </li>
+              <li className="hover:text-[#4B83FE]">
+                <a href="/">Comparison</a>
+              </li>
+              <li className="hover:text-[#4B83FE]">
+                <a href="/">Tourism Criteria</a>
+              </li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-semibold mb-2">Support</h4>
             <ul className="text-sm space-y-1">
-              <li>Contact</li>
+              <li className="hover:text-[#4B83FE]">
+                <a href="#contact">Contact</a>
+              </li>
             </ul>
           </div>
 
-          <div>
+          {/* <div>
             <h4 className="font-semibold mb-2">Legal</h4>
             <ul className="text-sm space-y-1">
               <li>Kebijakan Privasi</li>
               <li>Syarat & Ketentuan</li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
 
       <div className="text-center text-sm text-gray-500 py-4 border-t border-gray-300">
-        © 2025 Decision support system. All rights reserved.
+        © 2025 Decision support system tourism destination. All rights reserved.
       </div>
     </footer>
   );

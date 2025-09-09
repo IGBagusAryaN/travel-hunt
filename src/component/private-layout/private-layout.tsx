@@ -39,7 +39,7 @@ export const PrivateLayout = () => {
 
   if (isAuthenticated === null) {
     return <div className="flex justify-center w-full items-center h-[100vh]" >
-      <Loading size="10%"/>
+      <Loading/>
     </div>;
   }
 

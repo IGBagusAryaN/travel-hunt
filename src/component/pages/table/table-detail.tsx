@@ -17,10 +17,10 @@ export const TableDetail = () => {
   }, []);
 
   return (
-    <div className="px-4 md:px-8">
+    <div className="px-4 lg:px-2 max-w-screen-xl mx-auto">
       {isLoading ? (
         <div className="flex justify-center items-center h-screen">
-          <Loading size="10%" />
+          <Loading />
         </div>
       ) : (
         <div className="pt-28">

@@ -17,6 +17,8 @@ export const Cities = () => {
   const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [error] = useState<string | null>(null);
+    const itemsPerPage = 8; // jumlah item per halaman
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -39,9 +41,23 @@ export const Cities = () => {
     place.city.toLowerCase().includes(search.toLowerCase())
   );
 
+
+
+  // Reset ke halaman 1 kalau search berubah
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search]);
+
+  const totalPages = Math.ceil(filteredMapCity.length / itemsPerPage);
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentItems = filteredMapCity.slice(
+    startIndex,
+    startIndex + itemsPerPage
+  );
   return (
-    <div className="">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-5 pt-36 px-4">
+    <div className="px-2 max-w-screen-xl mx-auto">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-5 pt-40 px-4">
         <div>
           <div className="text-[24px] font-semibold">
             Choose your destination city
@@ -85,11 +101,10 @@ export const Cities = () => {
           </div>
         </form>
       </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10 mb-20 gap-5 gap-y-10 px-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 gap-y-10 mt-5 px-4">
         {isLoading ? (
           <div className="col-span-4 flex justify-center items-center">
-            <Loading size="30%" />
+            <Loading />
           </div>
         ) : error ? (
           <div>{error}</div>
@@ -99,7 +114,7 @@ export const Cities = () => {
             <div className="mt-5">Kota yang Anda cari tidak ada!</div>
           </div>
         ) : (
-          filteredMapCity.map((cities, index) => (
+          currentItems.map((cities, index) => (
             <Link
               to={`/calculation/${cities.city}`}
               className="max-w-sm overflow-hidden"
@@ -125,6 +140,29 @@ export const Cities = () => {
           ))
         )}
       </div>
+
+      {/* Pagination Controls */}
+      {filteredMapCity.length > itemsPerPage && (
+        <div className="flex justify-center items-center gap-4 my-8">
+          <button
+            className="px-4 py-2 rounded-lg bg-gray-200 disabled:opacity-50 disabled:hover:bg-gray-200 disabled:hover:text-black cursor-pointer hover:bg-[#4B83FE] hover:text-white"
+            onClick={() => setCurrentPage((prev) => prev - 1)}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          <span className="text-gray-600">
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            className="px-4 py-2 rounded-lg bg-gray-200 disabled:opacity-50 disabled:hover:bg-gray-200 disabled:hover:text-black cursor-pointer hover:bg-[#4B83FE] hover:text-white"
+            onClick={() => setCurrentPage((prev) => prev + 1)}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
+        </div>
+      )}
     </div>
   );
 };
